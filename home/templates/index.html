@@ -1,1 +1,152 @@
-<h1>Bem Vindo<h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Céu & Mar Pousada</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #0e3a5d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #1d7fa3;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #0e3a5d;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #e58a1f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #c97212;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: #0e3a5d;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Céu & Mar Pousada</h1>
+    <p>Controle de hóspedes, reservas e quartos</p>
+  </header>
+
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Hóspedes</a>
+    <a href="#">Reservas</a>
+    <a href="#">Quartos</a>
+    <a href="#">Relatórios</a>
+  </nav>
+
+  <main class="container">
+    <h2>Painel Principal</h2>
+    <p>Bem-vindo ao sistema de gerenciamento da pousada.</p>
+
+    <section class="cards">
+
+      <div class="card">
+        <h3>Hóspedes</h3>
+        <p>Cadastre e consulte informações dos hóspedes.</p>
+        <a href="#" class="btn">Acessar</a>
+      </div>
+
+      <div class="card">
+        <h3>Reservas</h3>
+        <p>Gerencie reservas, entradas e saídas.</p>
+        <a href="#" class="btn">Acessar</a>
+      </div>
+
+      <div class="card">
+        <h3>Quartos</h3>
+        <p>Controle quartos disponíveis, ocupados e em manutenção.</p>
+        <a href="#" class="btn">Acessar</a>
+      </div>
+
+      <div class="card">
+        <h3>Pagamentos</h3>
+        <p>Acompanhe pagamentos e valores pendentes.</p>
+        <a href="#" class="btn">Acessar</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Céu & Mar Pousada</p>
+  </footer>
+
+</body>
+</html>

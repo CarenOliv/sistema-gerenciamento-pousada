@@ -20,8 +20,10 @@ from django.urls import path
 #rotas de apps
 
 from home import views as views_principais
+from hospedes import views as views_telaGeralHosp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('principal/',views_principais.principal)
+    path('principal/',views_principais.principal),
+    path('hospedes/', views_telaGeralHosp.index, name='hospedes'),
 ]
