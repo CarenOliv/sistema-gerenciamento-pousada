@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+#rotas de apps
+
+from home import views as views_principais
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('principal/',views_principais.principal)
 ]
