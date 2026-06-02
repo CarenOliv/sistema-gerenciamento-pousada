@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import *
+#Enviar a model para o painel do administrador:
+
+admin.site.register(Hospede)
