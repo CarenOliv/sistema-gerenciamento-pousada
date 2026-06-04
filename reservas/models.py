@@ -16,8 +16,8 @@ class Reserva (models.Model):
 
     quarto=models.ForeignKey(Quarto,on_delete=models.CASCADE)
 
-    data_entrada=models.DateField
-    data_saida=models.DateField
+    data_entrada=models.DateField()
+    data_saida=models.DateField()
     status=models.CharField(max_length=10)
 
     def __str__(self):

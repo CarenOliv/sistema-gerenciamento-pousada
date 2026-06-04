@@ -21,10 +21,14 @@ from django.urls import path
 
 from home import views as views_principais
 from hospedes import views as views_telaGeralHosp
+from quartos import views as views_quartos
+from reservas import views as views_reservas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views_principais.principal),
     #path('principal/',views_principais.principal),
     path('hospedes/', views_telaGeralHosp.index, name='hospedes'),
+    path('quartos/', views_quartos.index, name='quartos'),
+    path('reservas/', views_reservas.index, name='reservas')
 ]

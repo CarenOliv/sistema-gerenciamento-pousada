@@ -1,47 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hóspedes - Céu & Mar Pousada</title>
+  <title>Reservas - Céu & Mar Pousada</title>
 
   <style>
-
-    *{
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
-    body{
+    body {
       background-color: #f4f6f8;
     }
 
-    header{
+    header {
       background-color: #0e3a5d;
       color: white;
       padding: 20px;
       text-align: center;
     }
 
-    .container{
+    .container {
       width: 90%;
       margin: 30px auto;
     }
 
-    .topo{
+    .topo {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
 
-    .topo h2{
+    .topo h2 {
       color: #0e3a5d;
     }
 
-    .btn{
+    .btn {
       background-color: #e58a1f;
       color: white;
       padding: 10px 18px;
@@ -51,11 +50,7 @@
       font-weight: bold;
     }
 
-    .btn:hover{
-      background-color: #c97212;
-    }
-
-    table{
+    table {
       width: 100%;
       border-collapse: collapse;
       background-color: white;
@@ -64,23 +59,23 @@
       overflow: hidden;
     }
 
-    th{
+    th {
       background-color: #1d7fa3;
       color: white;
       padding: 15px;
       text-align: left;
     }
 
-    td{
+    td {
       padding: 15px;
       border-bottom: 1px solid #ddd;
     }
 
-    tr:hover{
+    tr:hover {
       background-color: #f1f1f1;
     }
 
-    .acoes button{
+    .acoes button {
       padding: 7px 12px;
       border: none;
       border-radius: 5px;
@@ -89,82 +84,59 @@
       margin-right: 5px;
     }
 
-    .editar{
+    .editar {
       background-color: #1d7fa3;
     }
 
-    .excluir{
+    .excluir {
       background-color: #d9534f;
     }
 
-    footer{
+    footer {
       margin-top: 40px;
       background-color: #0e3a5d;
       color: white;
       text-align: center;
       padding: 15px;
     }
-
   </style>
-
 </head>
 
 <body>
 
   <header>
-    <h1>Gerenciamento de Hóspedes</h1>
+    <h1>Gerenciamento de Reservas</h1>
   </header>
-
-  <h1>Adicione novos hóspedes</h1>
-
-  <!--Criando o formulário na View-->
-  <form method="post">
-    
-    {% csrf_token %}
-
-    <p>Informe os dados do hópede: </p>
-    {{formulario.as_p}}
-
-    <button type='submit'>
-      Enviar
-    </button>
-
-  </form>
 
   <div class="container">
 
     <div class="topo">
-      <h2>Lista de Hóspedes</h2>
-
-      <button class="btn">
-        + Novo Hóspede
-      </button>
+      <h2>Lista de Reservas</h2>
+      <button class="btn">+ Nova Reserva</button>
     </div>
 
     <table>
-
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
-          <th>CPF</th>
-          <th>Telefone</th>
-          <th>Email</th>
+          <th>Hóspede</th>
+          <th>Quarto</th>
+          <th>Entrada</th>
+          <th>Saída</th>
+          <th>Status</th>
           <th>Ações</th>
         </tr>
       </thead>
 
       <tbody>
-        
-        <!--Uso das diretivas-->
-        {% for hospede in hosp %}
-
+        {% for reserva in reservas %}
         <tr>
-          <td>{{ hospede.id }}</td>
-          <td>{{ hospede.nome }}</td>
-          <td>{{ hospede.cpf }}</td>
-          <td>{{ hospede.telefone }}</td>
-          <td>{{ hospede.email }}</td>
+          <td>{{ reserva.id }}</td>
+          <td>{{ reserva.hospede.nome }}</td>
+          <td>Quarto {{ reserva.quarto.numero }}</td>
+          <td>{{ reserva.data_entrada }}</td>
+          <td>{{ reserva.data_saida }}</td>
+          <td>{{ reserva.status }}</td>
 
           <td class="acoes">
             <button class="editar">Editar</button>
@@ -173,17 +145,13 @@
         </tr>
 
         {% empty %}
-
         <tr>
-          <td colspan="6" style="text-align:center;">
-            Nenhum hóspede cadastrado.
+          <td colspan="7" style="text-align:center;">
+            Nenhuma reserva cadastrada.
           </td>
         </tr>
-
         {% endfor %}
-
       </tbody>
-
     </table>
 
   </div>
