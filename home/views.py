@@ -1,8 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 #vamos usar o render para chamar o Template
 from django.http import HttpResponse
+from django.contrib.auth import authenticate,login, logout
 
-# Create your views here.
+
+def login_view(request):
+    if request.method=="POST":
+        username = request.POST.get("usuario")
+        password = request.POST.get("senha")
+
+        print("Usuário digitado:", username)
+        print("Senha digitada:", password)
+
+        user = authenticate(
+            request, username=username, password=password
+        )
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        
+        else:
+            return render(
+                request,
+                'login.html', {'erro':'Usuário não encontrado'}
+            )
+    return render (request, 'login.html')
+
+
+#logout próprio do Django
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 def principal(request):
     #return HttpResponse("Chegamos na View")

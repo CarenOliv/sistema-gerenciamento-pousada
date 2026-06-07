@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - CM Pousada</title>
+
+    <style>
+        
+        /*Tira as margens padrão do navegador*/
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            height:100vh;
+            display: flex;
+            justify-content:center;
+            align-items:center;
+
+            background: linear-gradient(
+                135deg,
+                #102B4E,
+                #D9895B
+            );
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+
+        #container-login{
+            width:900px;
+            max-width:90%;
+            height: 500px;
+            display:flex;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgba (0,0,0,0.2)
+        }
+
+        #lado-logo{
+            width:50%;
+            background-color: #102B4E;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px
+        }
+
+        #lado-logo img{
+            width:80%;
+            max-width:300px
+        }
+
+        #lado-form{
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            padding:50px
+        }
+
+        #lado-form h2{
+            margin-bottom: 30px;
+            color:#102B4E
+        }
+
+        .grupo-campo{
+            display:flex;
+            flex-direction:row;
+            margin-bottom:25px;
+            align-items:center;
+            gap:5px;
+            margin-bottom:20px
+        }
+
+        .grupo-campo label{
+            margin-bottom: 5px;
+            color:#444;
+            width:120px;
+            font-size:16px;
+        }
+
+        .grupo-campo input{
+            flex:1;
+            padding: 8px;
+            font-size:16px;
+            border:none;
+            border-bottom: 2px solid #CCC;
+            outline: none;
+        }
+
+        .grupo-campo input:focus{
+            border-bottom: 2px solid #D9895B
+        }
+
+        button{
+            align-self:flex-end;
+            margin-top:15px;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            color:white;
+            background-color: #D9895B;
+            font-size:16px;
+            cursor:pointer
+        }
+        button:hover{
+            opacity:0.9
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div id="container-login">
+        <div id="lado-logo">
+            <img src="{% static 'LogoPousada.jpeg'%}" alt="Logo da pousada">
+        </div>
+    
+
+    
+
+        <div id="lado-form">
+
+            <h2>Seja Bem-Vindo ao Sistema da Céu & Mar Pousada</h2>
+            
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="grupo-campo">
+                    <label for="usuario">Usuário: </label>
+                    <input type="text" name="usuario" id="" placeholder="Digite seu usuário">
+                </div>
+                
+                <div class="grupo-campo">
+                    <label for="senha">Senha: </label>
+                    <input type="password" name="senha" id="" placeholder="Digite sua senha">
+                </div>
+
+                <button>Entrar</button>
+                {% if erro %}
+                <p>{{ erro }}</p>
+                {%endif%}
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>

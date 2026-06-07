@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,98 +7,316 @@
   <title>Reservas - Céu & Mar Pousada</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+        /* =========================
+      CONFIGURAÇÕES GERAIS
+    ========================= */
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
     }
 
-    body {
-      background-color: #f4f6f8;
+    body{
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        background-color:#F5F5F5;
+
+        min-height:100vh;
+
+        display:flex;
+
+        flex-direction:column;
     }
 
-    header {
-      background-color: #0e3a5d;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    /* =========================
+      CABEÇALHO
+    ========================= */
+
+    header{
+
+        background-color:#102B4E;
+
+        height:90px;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+        padding:0 50px;
+
+        box-shadow:0 3px 10px rgba(0,0,0,.15);
     }
 
-    .container {
-      width: 90%;
-      margin: 30px auto;
+    /* Logo */
+
+    .logo img{
+
+        height:65px;
     }
 
-    .topo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+    /* Menu */
+
+    nav{
+
+        display:flex;
+
+        gap:30px;
     }
 
-    .topo h2 {
-      color: #0e3a5d;
+    nav a{
+
+        text-decoration:none;
+
+        color:white;
+
+        font-weight:bold;
+
+        transition:0.3s;
     }
 
-    .btn {
-      background-color: #e58a1f;
-      color: white;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    nav a:hover{
+
+        color:#D9895B;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+    /* =========================
+      CONTEÚDO
+    ========================= */
+
+    main{
+
+        flex:1;
+
+        padding:40px;
     }
 
-    th {
-      background-color: #1d7fa3;
-      color: white;
-      padding: 15px;
-      text-align: left;
+    /* Título */
+
+    .cabecalho-pagina{
+
+        margin-bottom:30px;
     }
 
-    td {
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
+    .cabecalho-pagina h1{
+
+        color:#102B4E;
+
+        margin-bottom:10px;
     }
 
-    tr:hover {
-      background-color: #f1f1f1;
+    .cabecalho-pagina p{
+
+        color:#666;
     }
 
-    .acoes button {
-      padding: 7px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      color: white;
-      margin-right: 5px;
+    /* =========================
+      BARRA DE AÇÕES
+    ========================= */
+
+    .barra-acoes{
+
+        display:flex;
+
+        gap:15px;
+
+        margin-bottom:25px;
+
+        align-items:center;
     }
 
-    .editar {
-      background-color: #1d7fa3;
+    /* Botão Nova Reserva */
+
+    .btn-nova-reserva{
+
+        background-color:#D9895B;
+
+        color:white;
+
+        border:none;
+
+        padding:12px 20px;
+
+        border-radius:10px;
+
+        cursor:pointer;
+
+        font-weight:bold;
     }
 
-    .excluir {
-      background-color: #d9534f;
+    /* Inputs */
+
+    .barra-acoes input,
+    .barra-acoes select{
+
+        padding:10px;
+
+        border:1px solid #ccc;
+
+        border-radius:8px;
     }
 
-    footer {
-      margin-top: 40px;
-      background-color: #0e3a5d;
-      color: white;
-      text-align: center;
-      padding: 15px;
+    /* =========================
+      TABELA
+    ========================= */
+
+    .tabela-container{
+
+        background:white;
+
+        padding:20px;
+
+        border-radius:15px;
+
+        box-shadow:0 5px 15px rgba(0,0,0,.08);
+    }
+
+    table{
+
+        width:100%;
+
+        border-collapse:collapse;
+    }
+
+    th{
+
+        background:#102B4E;
+
+        color:white;
+
+        padding:15px;
+
+        text-align:left;
+    }
+
+    td{
+
+        padding:15px;
+
+        border-bottom:1px solid #eee;
+    }
+
+    /* =========================
+      STATUS
+    ========================= */
+
+    .status{
+
+        padding:6px 12px;
+
+        border-radius:20px;
+
+        font-size:14px;
+
+        font-weight:bold;
+    }
+
+    /* Reservada */
+
+    .reservada{
+
+        background:#FFF3CD;
+
+        color:#856404;
+    }
+
+    /* Hospedada */
+
+    .hospedada{
+
+        background:#D4EDDA;
+
+        color:#155724;
+    }
+
+    /* Finalizada */
+
+    .finalizada{
+
+        background:#D6EAF8;
+
+        color:#21618C;
+    }
+
+    /* Cancelada */
+
+    .cancelada{
+
+        background:#F8D7DA;
+
+        color:#721C24;
+    }
+
+    /* =========================
+      BOTÕES DE AÇÃO
+    ========================= */
+
+    .acao{
+
+        border:none;
+
+        padding:8px 12px;
+
+        border-radius:8px;
+
+        cursor:pointer;
+
+        color:white;
+
+        font-size:13px;
+    }
+
+    /* Visualizar */
+
+    .visualizar{
+
+        background:#102B4E;
+    }
+
+    /* Editar */
+
+    .editar{
+
+        background:#D9895B;
+    }
+
+    /* Check-in */
+
+    .checkin{
+
+        background:#28A745;
+    }
+
+    /* Check-out */
+
+    .checkout{
+
+        background:#17A2B8;
+    }
+
+    /* Excluir */
+
+    .excluir{
+
+        background:#DC3545;
+    }
+
+    /* =========================
+      RODAPÉ
+    ========================= */
+
+    footer{
+
+        background:#102B4E;
+
+        color:white;
+
+        text-align:center;
+
+        padding:15px;
     }
   </style>
 </head>
@@ -105,56 +324,92 @@
 <body>
 
   <header>
-    <h1>Gerenciamento de Reservas</h1>
-  </header>
+    <!--<h1>Gerenciamento de Reservas</h1>-->
 
-  <div class="container">
-
-    <div class="topo">
-      <h2>Lista de Reservas</h2>
-      <button class="btn">+ Nova Reserva</button>
+    <div class="logo">
+      <img src="{% static 'LogoPousada.jpeg'%}" alt="Logo da pousada">
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Hóspede</th>
-          <th>Quarto</th>
-          <th>Entrada</th>
-          <th>Saída</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+    
+      <nav>
+        <a href="#">Hópedes</a>
+        <a href="#">Reservas</a>
 
-      <tbody>
-        {% for reserva in reservas %}
-        <tr>
-          <td>{{ reserva.id }}</td>
-          <td>{{ reserva.hospede.nome }}</td>
-          <td>Quarto {{ reserva.quarto.numero }}</td>
-          <td>{{ reserva.data_entrada }}</td>
-          <td>{{ reserva.data_saida }}</td>
-          <td>{{ reserva.status }}</td>
+        {% if request.user.is_superuser %}
+        <a href="#">Quartos</a>
+        <a href="/admin/">Configurações</a>
+        {% endif %}
 
-          <td class="acoes">
-            <button class="editar">Editar</button>
-            <button class="excluir">Excluir</button>
-          </td>
-        </tr>
+        <a href="{% url 'logout %'}">Sair</a>
+      </nav>
+  </header>
 
-        {% empty %}
-        <tr>
-          <td colspan="7" style="text-align:center;">
-            Nenhuma reserva cadastrada.
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <main>
 
-  </div>
+    <section class="cabecalho-pagina">
+      <h1>Gerenciamento de Reservas</h1>
+      <p>Visualize e gerencie as reservas da pousada</p>
+    </section>
+
+    <section class="barra-acoes">
+      <button class="btn-nova-reserva">Nova Reserva</button>
+      <input type="text" placeholder="Pesquisar hóspede...">
+
+      <selecion>
+        <option>Todos os status</option>
+        <option>Reservada</option>
+        <option>Hospedada</option>
+        <option>Finalizada</option>
+        <option>Cancelada</option>
+      </selecion>
+    </section>
+
+    <section class="tabela-container">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Hóspede</th>
+            <th>Quarto</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          {% for reserva in reservas %}
+          <tr>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.hospede.nome }}</td>
+            <td>Quarto {{ reserva.quarto.numero }}</td>
+            <td>{{ reserva.data_entrada }}</td>
+            <td>{{ reserva.data_saida }}</td>
+            <td>{{ reserva.status }}</td>
+
+
+            <td class="acoes">
+              <button class="editar">Editar</button>
+              <button class="excluir">Excluir</button>
+            </td>
+          </tr>
+
+
+          {% empty %}
+          <tr>
+            <td colspan="7" style="text-align:center;">
+              Nenhuma reserva cadastrada.
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+  </main>
 
   <footer>
     <p>&copy; 2026 Sistema de Gerenciamento de Pousada</p>

@@ -24,10 +24,16 @@ from hospedes import views as views_telaGeralHosp
 from quartos import views as views_quartos
 from reservas import views as views_reservas
 
+
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',views_principais.principal),
-    #path('principal/',views_principais.principal),
+
+    path('',views_principais.login_view, name='login'),
+    path('home/',views_principais.principal, name='home'),
+    path('logout/',views_principais.logout_view, name='logout'),
+
+    path('admin/',admin.site.urls),
     path('hospedes/', views_telaGeralHosp.index, name='hospedes'),
     path('quartos/', views_quartos.index, name='quartos'),
     path('reservas/', views_reservas.index, name='reservas')
