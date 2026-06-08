@@ -1,8 +1,23 @@
-from django.shortcuts import render
-
-# Create your views here.
-
+from django.shortcuts import render, redirect
+from .forms import ReservaForm
 from .models import Reserva
+
+def novaReserva(request):
+    
+    if request.method=='POST':
+        form = ReservaForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('reservas')
+        
+    else:
+        form = ReservaForm ()
+    
+    return render(request,
+    'nova_reserva.html',
+    {'form':form})
+    
 
 def index(request):
     reservas = Reserva.objects.all()

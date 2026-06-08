@@ -7,9 +7,6 @@
   <title>Reservas - Céu & Mar Pousada</title>
 
   <style>
-        /* =========================
-      CONFIGURAÇÕES GERAIS
-    ========================= */
 
     *{
         margin:0;
@@ -327,7 +324,7 @@
     <!--<h1>Gerenciamento de Reservas</h1>-->
 
     <div class="logo">
-      <img src="{% static 'LogoPousada.jpeg'%}" alt="Logo da pousada">
+      <img src="{% static 'LogoCM.jpeg'%}" alt="Logo da pousada">
     </div>
 
     
@@ -340,7 +337,7 @@
         <a href="/admin/">Configurações</a>
         {% endif %}
 
-        <a href="{% url 'logout %'}">Sair</a>
+        <a href="{% url 'logout' %}">Sair</a>
       </nav>
   </header>
 
@@ -352,7 +349,11 @@
     </section>
 
     <section class="barra-acoes">
-      <button class="btn-nova-reserva">Nova Reserva</button>
+      <a href="{% url 'nova_reserva'%}">
+        <button class="btn-nova-reserva">Nova Reserva</button>
+      </a>
+      
+      <!--
       <input type="text" placeholder="Pesquisar hóspede...">
 
       <selecion>
@@ -362,6 +363,8 @@
         <option>Finalizada</option>
         <option>Cancelada</option>
       </selecion>
+      -->
+      
     </section>
 
     <section class="tabela-container">

@@ -36,5 +36,6 @@ urlpatterns = [
     path('admin/',admin.site.urls),
     path('hospedes/', views_telaGeralHosp.index, name='hospedes'),
     path('quartos/', views_quartos.index, name='quartos'),
-    path('reservas/', views_reservas.index, name='reservas')
+    path('reservas/', views_reservas.index, name='reservas'),
+    path('reservas/nova', views_reservas.novaReserva, name='nova_reserva')
 ]

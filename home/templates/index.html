@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -101,7 +102,7 @@
   <header>
     
     <div id="logo">
-      <img src="/home/static/LogoPousada.jpeg" alt="Logo da pousada">
+      <img src="{% static 'LogoCM.jpeg'%}" alt="Logo da pousada">
     </div>
 
     <div>
@@ -128,17 +129,17 @@
 
       <div class="card">
         <h3>Hóspedes</h3>
-        <span>25</span>
+        <span>{{total_hospedes}}</span>
       </div>
 
       <div class="card">
         <h3>Reservas</h3>
-        <span>8</span>
+        <span>{{total_reservas}}</span>
       </div>
 
       <div class="card">
         <h3>Quartos</h3>
-        <span>10</span>
+        <span>{{total_quartos}}</span>
       </div>
 
 
