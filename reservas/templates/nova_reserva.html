@@ -1,51 +1,333 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CM-Nova Reserva</title>
+    <title>Nova Reserva - Céu & Mar Pousada</title>
+
+    <style>
+
+        /* ======================
+           CONFIGURAÇÃO GERAL
+        ====================== */
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:#F5F5F5;
+
+            min-height:100vh;
+
+            display:flex;
+
+            flex-direction:column;
+        }
+
+        /* ======================
+           CABEÇALHO
+        ====================== */
+
+        header{
+
+            background:#102B4E;
+
+            height:90px;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            padding:0 50px;
+        }
+
+        .logo img{
+
+            height:65px;
+        }
+
+        nav{
+
+            display:flex;
+
+            gap:30px;
+        }
+
+        nav a{
+
+            color:white;
+
+            text-decoration:none;
+
+            font-weight:bold;
+        }
+
+        nav a:hover{
+
+            color:#D9895B;
+        }
+
+        /* ======================
+           CONTEÚDO
+        ====================== */
+
+        main{
+
+            flex:1;
+
+            padding:40px;
+        }
+
+        /* TÍTULO */
+
+        .cabecalho-pagina{
+
+            margin-bottom:30px;
+        }
+
+        .cabecalho-pagina h1{
+
+            color:#102B4E;
+
+            margin-bottom:10px;
+        }
+
+        .cabecalho-pagina p{
+
+            color:#666;
+        }
+
+        /* ======================
+           CARD DO FORMULÁRIO
+        ====================== */
+
+        .formulario-card{
+
+            background:white;
+
+            max-width:700px;
+
+            padding:35px;
+
+            border-radius:15px;
+
+            box-shadow:0 5px 15px rgba(0,0,0,.08);
+        }
+
+        /* CAMPOS */
+
+        .grupo-campo{
+
+            display:flex;
+
+            flex-direction:column;
+
+            margin-bottom:20px;
+        }
+
+        .grupo-campo label{
+
+            margin-bottom:8px;
+
+            font-weight:bold;
+
+            color:#102B4E;
+        }
+
+        .grupo-campo input,
+        .grupo-campo select{
+
+            padding:12px;
+
+            border:1px solid #ccc;
+
+            border-radius:8px;
+        }
+
+        /* ======================
+           BOTÕES
+        ====================== */
+
+        .acoes-formulario{
+
+            display:flex;
+
+            justify-content:flex-end;
+
+            gap:15px;
+
+            margin-top:25px;
+        }
+
+        /* BOTÃO CANCELAR */
+
+        .btn-cancelar{
+
+            background:#6C757D;
+
+            color:white;
+
+            border:none;
+
+            padding:12px 18px;
+
+            border-radius:8px;
+
+            cursor:pointer;
+        }
+
+        /* BOTÃO SALVAR */
+
+        .btn-salvar{
+
+            background:#D9895B;
+
+            color:white;
+
+            border:none;
+
+            padding:12px 20px;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+            font-weight:bold;
+        }
+
+        /* ======================
+           RODAPÉ
+        ====================== */
+
+        footer{
+
+            background:#102B4E;
+
+            color:white;
+
+            text-align:center;
+
+            padding:15px;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
+    <!-- ======================
+         CABEÇALHO
+    ====================== -->
     <header>
+
         <div class="logo">
             <img src="{% static 'LogoCM.jpeg'%}" alt="Logo da pousada">
         </div>
 
-            <nav>
+        <nav>
 
-                <a href="#">Home</a>
-                <a href="#">Hóspedes</a>
-                <a href="#">Reservas</a>
-                <a href="#">Quartos</a>
-                <a href="#">Configurações</a>
-                <a href="#">Sair</a>
+            <a href="#">Home</a>
 
-            </nav>
+            <a href="#">Hóspedes</a>
+
+            <a href="#">Reservas</a>
+
+            <a href="#">Quartos</a>
+
+            <a href="#">Configurações</a>
+
+            <a href="#">Logout</a>
+
+        </nav>
 
     </header>
 
+    <!-- ======================
+         CONTEÚDO
+    ====================== -->
     <main>
-        <section>
+
+        <section class="cabecalho-pagina">
+
             <h1>Nova Reserva</h1>
-            <p>Cadastre uma nova reserva.</p>
-            
-            <section class="formulario-card">
-                <form method="POST">
-                    {% csrf_token %}
 
-                    {{ for.as_p }}
-
-                    <button type="submit">
-                        Salvar Reserva
-                    </button>
-                </form>
-            </section>
+            <p>
+                Cadastre uma nova reserva para um hóspede da pousada.
+            </p>
 
         </section>
+
+        <section class="formulario-card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="grupo-campo">
+                    <label>Hóspede</label>
+                    {{ form.hospede }}
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Quarto</label>
+                    {{ form.quarto }}
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Data de Entrada</label>
+                    {{ form.data_entrada }}
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Data de Saída</label>
+                    {{ form.data_saida }}
+                </div>
+
+                <div class="grupo-campo">
+                    <label>Status</label>
+                    {{ form.status }}
+                </div>
+
+                <div class="acoes-formulario">
+
+                    <a href="{% url 'reservas' %}" class="btn-cancelar">
+                        Cancelar
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn-salvar">
+
+                        Salvar Reserva
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
     </main>
 
-    
+    <!-- ======================
+         RODAPÉ
+    ====================== -->
+    <footer>
+
+        © 2026 Sistema de Gerenciamento da Céu & Mar Pousada
+
+    </footer>
+
 </body>
 </html>
