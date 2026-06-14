@@ -1,25 +1,32 @@
 from django.shortcuts import render, redirect
-from .models import *
+from .models import Hospede
 from .forms import HospForm
 
-# Create your views here.
 
 def index(request):
     hospede = Hospede.objects.all() #vai pegar todos os hóspedes cadastrados no banco
 
-    if request.method == "POST":
+    return render(
+        request,
+        'telaGeralHosp.html',
+        {'hosp': hospede}
+    )
+
+
+def novoHospede(request):
+
+    if request.method == 'POST':
         form = HospForm(request.POST)
 
         if form.is_valid():
             form.save()
-
             return redirect('hospedes')
+
     else:
         form = HospForm()
 
-    return render(request, 
-                  'telaGeralHosp.html',
-                  {'hosp':hospede,
-                   'formulario':form} #isso são objetos
-                  )
-
+    return render(
+        request,
+        'novo_hospede.html',
+        {'formulario': form}
+    )

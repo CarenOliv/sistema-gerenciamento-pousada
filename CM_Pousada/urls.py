@@ -34,8 +34,14 @@ urlpatterns = [
     path('logout/',views_principais.logout_view, name='logout'),
 
     path('admin/',admin.site.urls),
+
     path('hospedes/', views_telaGeralHosp.index, name='hospedes'),
+    path('hospedes/novo', views_telaGeralHosp.novoHospede, name='novo_hospede'),
+
     path('quartos/', views_quartos.index, name='quartos'),
+    path('quartos/novo', views_quartos.novoQuarto, name='novo_quarto'),
+
     path('reservas/', views_reservas.index, name='reservas'),
     path('reservas/nova', views_reservas.novaReserva, name='nova_reserva')
+    
 ]

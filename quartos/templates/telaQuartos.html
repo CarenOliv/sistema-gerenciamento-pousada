@@ -1,166 +1,390 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quartos - Céu & Mar Pousada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quartos - Céu & Mar Pousada</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+    <style>
 
-    body {
-      background-color: #f4f6f8;
-    }
+        /* ======================
+           CONFIGURAÇÕES GERAIS
+        ====================== */
 
-    header {
-      background-color: #0e3a5d;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
-    .container {
-      width: 90%;
-      margin: 30px auto;
-    }
+        body{
 
-    .topo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+            font-family: Arial, Helvetica, sans-serif;
 
-    .topo h2 {
-      color: #0e3a5d;
-    }
+            background:#F5F5F5;
 
-    .btn {
-      background-color: #e58a1f;
-      color: white;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+            min-height:100vh;
 
-    .btn:hover {
-      background-color: #c97212;
-    }
+            display:flex;
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
-    }
+            flex-direction:column;
+        }
 
-    th {
-      background-color: #1d7fa3;
-      color: white;
-      padding: 15px;
-      text-align: left;
-    }
+        /* ======================
+           CABEÇALHO
+        ====================== */
 
-    td {
-      padding: 15px;
-      border-bottom: 1px solid #ddd;
-    }
+        header{
 
-    tr:hover {
-      background-color: #f1f1f1;
-    }
+            background:#102B4E;
 
-    .acoes button {
-      padding: 7px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      color: white;
-      margin-right: 5px;
-    }
+            height:90px;
 
-    .editar {
-      background-color: #1d7fa3;
-    }
+            display:flex;
 
-    .excluir {
-      background-color: #d9534f;
-    }
+            justify-content:space-between;
 
-    footer {
-      margin-top: 40px;
-      background-color: #0e3a5d;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+            align-items:center;
+
+            padding:0 50px;
+
+            box-shadow:0 3px 10px rgba(0,0,0,.15);
+        }
+
+        .logo img{
+
+            height:65px;
+        }
+
+        nav{
+
+            display:flex;
+
+            gap:30px;
+        }
+
+        nav a{
+
+            color:white;
+
+            text-decoration:none;
+
+            font-weight:bold;
+
+            transition:.3s;
+        }
+
+        nav a:hover{
+
+            color:#D9895B;
+        }
+
+        /* ======================
+           CONTEÚDO
+        ====================== */
+
+        main{
+
+            flex:1;
+
+            padding:40px;
+        }
+
+        /* TÍTULO */
+
+        .cabecalho-pagina{
+
+            margin-bottom:30px;
+        }
+
+        .cabecalho-pagina h1{
+
+            color:#102B4E;
+
+            margin-bottom:10px;
+        }
+
+        .cabecalho-pagina p{
+
+            color:#666;
+        }
+
+        /* ======================
+           BARRA DE AÇÕES
+        ====================== */
+
+        .barra-acoes{
+
+            margin-bottom:25px;
+        }
+
+        .btn-novo{
+
+            background:#D9895B;
+
+            color:white;
+
+            border:none;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            cursor:pointer;
+
+            font-weight:bold;
+        }
+
+        .btn-novo:hover{
+
+            opacity:.9;
+        }
+
+        /* ======================
+           TABELA
+        ====================== */
+
+        .tabela-container{
+
+            background:white;
+
+            padding:20px;
+
+            border-radius:15px;
+
+            box-shadow:0 5px 15px rgba(0,0,0,.08);
+        }
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+        }
+
+        th{
+
+            background:#102B4E;
+
+            color:white;
+
+            padding:15px;
+
+            text-align:left;
+        }
+
+        td{
+
+            padding:15px;
+
+            border-bottom:1px solid #EAEAEA;
+        }
+
+        tr:hover{
+
+            background:#FAFAFA;
+        }
+
+        /* ======================
+           STATUS
+        ====================== */
+
+        .status{
+
+            padding:6px 12px;
+
+            border-radius:20px;
+
+            font-size:14px;
+
+            font-weight:bold;
+        }
+
+        .disponivel{
+
+            background:#D4EDDA;
+
+            color:#155724;
+        }
+
+        .ocupado{
+
+            background:#F8D7DA;
+
+            color:#721C24;
+        }
+
+        .manutencao{
+
+            background:#FFF3CD;
+
+            color:#856404;
+        }
+
+        /* ======================
+           RODAPÉ
+        ====================== */
+
+        footer{
+
+            background:#102B4E;
+
+            color:white;
+
+            text-align:center;
+
+            padding:15px;
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-  <header>
-    <h1>Gerenciamento de Quartos</h1>
-  </header>
+    <!-- CABEÇALHO -->
 
-  <div class="container">
+    <header>
 
-    <div class="topo">
-      <h2>Lista de Quartos</h2>
-      <button class="btn">+ Novo Quarto</button>
-    </div>
+        <div class="logo">
 
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Número</th>
-          <th>Tipo</th>
-          <th>Valor da diária</th>
-          <th>Disponível</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+            <img src="{% static 'LogoCM.jpeg' %}" alt="Logo Céu & Mar">
 
-      <tbody>
-        {% for quarto in quartos %}
-        <tr>
-          <td>{{ quarto.id }}</td>
-          <td>{{ quarto.numero }}</td>
-          <td>{{ quarto.tipo }}</td>
-          <td>R$ {{ quarto.valor_diaria }}</td>
-          <td>{{ quarto.disponivel }}</td>
+        </div>
 
-          <td class="acoes">
-            <button class="editar">Editar</button>
-            <button class="excluir">Excluir</button>
-          </td>
-        </tr>
+        <nav>
 
-        {% empty %}
-        <tr>
-          <td colspan="6" style="text-align:center;">
-            Nenhum quarto cadastrado.
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+            <a href="/home/">Home</a>
+            
+            <a href="/hospedes/">Hóspedes</a>
+            
+            <a href="/reservas/">Reservas</a>
+            
+            {% if request.user.is_superuser %}
+                <a href="/quartos/">Quartos</a>
+                <a href="/admin/">Configurações</a>
+            {% endif %}
+            
+            <a href="{% url 'logout' %}">Logout</a>
 
-  </div>
 
-  <footer>
-    <p>&copy; 2026 Sistema de Gerenciamento de Pousada</p>
-  </footer>
+        </nav>
+
+    </header>
+
+    <!-- CONTEÚDO -->
+
+    <main>
+
+        <section class="cabecalho-pagina">
+
+            <h1>Gerenciamento de Quartos</h1>
+
+            <p>
+                Visualize e gerencie os quartos da pousada.
+            </p>
+
+        </section>
+
+        <!-- BOTÃO NOVO QUARTO -->
+
+        <section class="barra-acoes">
+
+          <a href="{% url 'novo_quarto'%}">
+            <button class="btn-novo">
+              + Novo Quarto
+            </button>
+          </a>
+            
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="tabela-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Número</th>
+
+                        <th>Tipo</th>
+
+                        <th>Diária</th>
+
+                        <th>Disponibilidade</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                  {% for quarto in quartos %}
+
+                  <tr>
+
+                      <td>{{ quarto.id }}</td>
+
+                      <td>{{ quarto.numero }}</td>
+
+                      <td>{{ quarto.tipo }}</td>
+
+                      <td>R$ {{ quarto.valor_diaria }}</td>
+
+                      <td>
+
+                          {% if quarto.disponivel %}
+
+                              <span class="status disponivel">
+                                  Disponível
+                              </span>
+
+                          {% else %}
+
+                              <span class="status ocupado">
+                                  Ocupado
+                              </span>
+
+                          {% endif %}
+
+                      </td>
+
+                  </tr>
+
+                  {% empty %}
+
+                  <tr>
+
+                      <td colspan="5" style="text-align:center;">
+                          Nenhum quarto cadastrado.
+                      </td>
+
+                  </tr>
+
+                  {% endfor %}
+
+              </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        © 2026 Sistema de Gerenciamento da Céu & Mar Pousada
+
+    </footer>
 
 </body>
 </html>

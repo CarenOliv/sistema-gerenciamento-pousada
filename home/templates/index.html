@@ -108,11 +108,11 @@
     <div>
 
       <nav>
-        <a href="#">Hópedes</a>
+        <a href="/hospedes/">Hópedes</a>
         <a href="/reservas/">Reservas</a>
 
         {% if request.user.is_superuser %}
-        <a href="#">Quartos</a>
+        <a href="/quartos/">Quartos</a>
         <a href="/admin/">Configurações</a>
         {% endif %}
 
@@ -129,7 +129,7 @@
 
       <div class="card">
         <h3>Hóspedes</h3>
-        <span>{{total_hospedes}}</span>
+        <span>{{total_hospede}}</span>
       </div>
 
       <div class="card">
