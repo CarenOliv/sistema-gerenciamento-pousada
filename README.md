@@ -112,3 +112,112 @@ sistema-gerenciamento-pousada/
 ├── CM_Pousada/     # Configurações principais do projeto Django
 ├── db.sqlite3      # Banco de dados local
 └── gerenciar.py    # Gerenciamento da aplicação Django
+---
+
+## 🔗 Relacionamento das reservas
+
+Cada reserva está associada a um **hóspede** e a um **quarto**.
+
+De forma simplificada:
+
+```text
+Hóspede
+   │
+   └──── Reserva ──── Quarto
+             │
+             ├── Data de entrada
+             ├── Data de saída
+             └── Status
+```
+
+Esse relacionamento é implementado utilizando os Models e o ORM do Django.
+
+---
+
+## Como executar o projeto
+
+### Pré-requisitos
+
+Antes de começar, certifique-se de possuir:
+
+- Python 3
+- pip
+- Git
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/CarenOliv/sistema-gerenciamento-pousada
+```
+
+### 2. Acesse a pasta do projeto
+
+```bash
+cd sistema-gerenciamento-pousada
+```
+
+### 3. Crie um ambiente virtual
+
+```bash
+python -m venv venv
+```
+
+### 4. Ative o ambiente virtual
+
+No Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+No Linux/macOS:
+
+```bash
+source venv/bin/activate
+```
+
+### 5. Instale o Django
+
+```bash
+pip install django
+```
+
+> Futuramente, as dependências do projeto poderão ser organizadas em um arquivo `requirements.txt`.
+
+### 6. Execute as migrações
+
+```bash
+python gerenciar.py migrate
+```
+
+### 7. Inicie o servidor
+
+```bash
+python gerenciar.py runserver
+```
+
+### 8. Acesse a aplicação
+
+Com o servidor em execução, abra no navegador:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Para encerrar o servidor, pressione `Ctrl + C` no terminal.
+
+---
+
+## 📚 Contexto de desenvolvimento
+
+Este projeto foi desenvolvido como atividade prática durante um **curso de Django**, com o objetivo de consolidar os conhecimentos estudados por meio da construção de uma aplicação web.
+
+Durante o desenvolvimento foram praticados conceitos relacionados a backend, banco de dados, organização de aplicações Django, formulários, relacionamentos entre entidades e controle de acesso.
+
+---
+
+## Status do projeto
+
+**Projeto de aprendizagem concluído.**
+
+O sistema pode receber melhorias e novas funcionalidades futuramente como parte da evolução dos meus estudos em desenvolvimento de software.
